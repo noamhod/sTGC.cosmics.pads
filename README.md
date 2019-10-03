@@ -1,0 +1,1 @@
+# sTGC.cosmics.pads
