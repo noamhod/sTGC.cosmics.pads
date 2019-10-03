@@ -1,4 +1,7 @@
-# sTGC.cosmics.pads
+# sTGC mapping
+1. to convert from one mapping to the other for one channel, run `python cmdmapping.py -h`
+
+# sTGC.cosmics.pads analysis
 1. setup python3 and ROOT
 2. get the data from /eos/user/h/hod/sTGC/root/ (or add new files) into root/
 3. the code expects one file per layer in this format:
