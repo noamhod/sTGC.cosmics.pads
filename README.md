@@ -1,5 +1,8 @@
 # sTGC mapping
 1. to convert from one mapping to the other for one channel, run `python cmdmapping.py -h`
+2. this is using mapping.txt [and columns.txt for reference] from Benoit's git:
+   https://gitlab.cern.ch/McGill-sTGC/NSW_sTGC_Channel_Mapping
+   make sure to update this file whenever a change is done upstram
 
 # sTGC.cosmics.pads analysis
 1. setup python3 and ROOT
