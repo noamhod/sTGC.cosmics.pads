@@ -9,7 +9,6 @@ parser = argparse.ArgumentParser(description='analysis.py...')
 parser.add_argument('-s', metavar='site', required=True,  help='IL [IL, RU, CH, CL, CA]')
 argus  = parser.parse_args()
 
-
 ### ROOT general
 ROOT.gROOT.SetBatch(1)
 ROOT.gStyle.SetOptFit(0);
@@ -17,7 +16,6 @@ ROOT.gStyle.SetOptStat(0);
 ROOT.gStyle.SetPadBottomMargin(0.15)
 ROOT.gStyle.SetPadLeftMargin(0.15)
 ROOT.gStyle.SetPadRightMargin(0.15)
-
 
 ### layesrs measured are defined in sites' files
 files = []
@@ -27,29 +25,8 @@ if(argus.s=="CH"): import CH; files = CH.files
 if(argus.s=="CL"): import CL; files = CL.files
 if(argus.s=="CA"): import CA; files = CA.files
 
-
-### load pad areas from Benny's xlsx -- add here boards as necessary
-allareas = {}
-if(argus.s=="IL"): 
-   allareas.update( {"QS3C":{"12":cathode.load('QS3C12','cathodes/4931.10-14_QS3C12_Pads_Area.xlsx'), "34":cathode.load('QS3C34','cathodes/4931.10-51_QS3C34_Pads_Area.xlsx')} } )
-   allareas.update( {"QL1P":{"12":cathode.load('QL1P12','cathodes/4921.00-14_QL1P12_Pads_Area.xlsx'), "34":cathode.load('QL1P34','cathodes/4921.00-51_QL1P34_Pads_Area.xlsx')} } )
-   allareas.update( {"QL1C":{"12":cathode.load('QL1C12','cathodes/4921.10-14_QL1C12_Pads_Area.xlsx'), "34":cathode.load('QL1C34','cathodes/4921.10-51_QL1C34_Pads_Area.xlsx')} } )
-if(argus.s=="RU"):
-   allareas.update( {"QL3P":{"12":cathode.load('QL3P12','cathodes/4995.00-14_QL3P12_Pads_Area.xlsx'), "34":cathode.load('QL3P34','cathodes/4995.00-51_QL3P34_Pads_Area.xlsx')} } )
-   allareas.update( {"QL3C":{"12":cathode.load('QL3C12','cathodes/4995.10-14_QL3C12_Pads_Area.xlsx'), "34":cathode.load('QL3C34','cathodes/4995.10-51_QL3C34_Pads_Area.xlsx')} } )
-if(argus.s=="CL"):
-   allareas.update( {"QS1P":{"12":cathode.load('QS1P12','cathodes/4963.00-14_QS1P12_Pads_Area.xlsx'), "34":cathode.load('QS1P34','cathodes/4963.00-51_QS1P34_Pads_Area.xlsx')} } )
-   allareas.update( {"QS1C":{"12":cathode.load('QS1C12','cathodes/4963.10-14_QS1C12_Pads_Area.xlsx'), "34":cathode.load('QS1C34','cathodes/4963.10-51_QS1C34_Pads_Area.xlsx')} } )
-if(argus.s=="CA"):
-   allareas.update( {"QS3P":{"12":cathode.load('QS3P12','cathodes/4931.00-14_QS3P12_Pads_Area.xlsx'), "34":cathode.load('QS3P34','cathodes/4931.00-51_QS3P34_Pads_Area.xlsx')} } )
-   # allareas.update( {"QL2P":{"12":cathode.load('QL2P12','cathodes/4921.00-14_QL2P12_Pads_Area.xlsx'), "34":cathode.load('QL2P34','cathodes/4921.00-51_QL2P34_Pads_Area.xlsx')} } )
-   # allareas.update( {"QL2C":{"12":cathode.load('QL2C12','cathodes/4921.10-14_QL2C12_Pads_Area.xlsx'), "34":cathode.load('QL2C34','cathodes/4921.10-51_QL2C34_Pads_Area.xlsx')} } )
-if(argus.s=="CH"):
-   print("Not implemented yet, quitting."); quit()
-   # allareas.update( {"QS2P":{"12":cathode.load('QS2P12','cathodes/4963.00-14_QS2P12_Pads_Area.xlsx'), "34":cathode.load('QS2P34','cathodes/4963.00-51_QS2P34_Pads_Area.xlsx')} } )
-   # allareas.update( {"QS2C":{"12":cathode.load('QS2C12','cathodes/4963.10-14_QS2C12_Pads_Area.xlsx'), "34":cathode.load('QS2C34','cathodes/4963.10-51_QS2C34_Pads_Area.xlsx')} } )
-print(cathode.bins)
-
+### load pad areas from Benny's xlsx
+allareas = cathode.get(argus.s)
 
 ### dictionaries
 histos = {}
@@ -62,18 +39,15 @@ h2hdummy = {}
 h2hareas = {}
 db = {}
 
-
 ### globals
 suffix = "_final_histograms_pads.root"
 
-
+### how much to trim (per site)
 if(argus.s=="IL"): ftrim = IL.ftrim
 if(argus.s=="RU"): ftrim = RU.ftrim
 if(argus.s=="CH"): ftrim = CH.ftrim
 if(argus.s=="CL"): ftrim = CL.ftrim
 if(argus.s=="CA"): ftrim = CA.ftrim
-
-
 
 
 ### load database
