@@ -131,7 +131,7 @@ def txtsummary(f,h,avg,rms):
    summary = ""
    ftxt = open("txt/"+f+".txt","w")
    ftxt.write(f+"\n")
-   ftxt.write("Mean and RMS calculated by trimming "+str(ftrim*100)+"% of the chanels with the highest normalised occupancy\n\n")
+   ftxt.write("Mean and RMS calculated by trimming "+str(ftrim*100)+"% of the channels with the highest normalised occupancy\n\n")
    quad  = db[f]["qname"]
    layer = str(db[f]["layer"])
    channels = mapping.read(quad,layer,"pad")

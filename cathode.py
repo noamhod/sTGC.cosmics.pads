@@ -38,10 +38,16 @@ def load(board,fname):
    ### CA
    elif("QS3P12" in fname and board=="QS3P12"): nbinsx = 2
    elif("QS3P34" in fname and board=="QS3P34"): nbinsx = 3
-
-   else:
-      print("unknown cathode.\nQuitting")
-      quit()
+   # elif("QL2P12" in fname and board=="QL2P12"): nbinsx = 
+   # elif("QL2P34" in fname and board=="QL2P34"): nbinsx = 
+   # elif("QL2C12" in fname and board=="QL2C12"): nbinsx = 
+   # elif("QL2C34" in fname and board=="QL2C34"): nbinsx = 
+   ### CH
+   # elif("QS2P12" in fname and board=="QS2P12"): nbinsx = 
+   # elif("QS2P34" in fname and board=="QS2P34"): nbinsx = 
+   # elif("QS2C12" in fname and board=="QS2C12"): nbinsx = 
+   # elif("QS2C34" in fname and board=="QS2C34"): nbinsx = 
+   else: print("unknown cathode.\nQuitting"); quit()
    nbinsy = int(n/nbinsx)
    bins.update( {board:{"npads":n, "nbinsx":nbinsx, "nbinsy":nbinsy}} )
    areas = dict(zip(pads,area))
