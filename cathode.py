@@ -38,10 +38,10 @@ def load(board,fname):
    ### CA
    elif("QS3P12" in fname and board=="QS3P12"): nbinsx = 2
    elif("QS3P34" in fname and board=="QS3P34"): nbinsx = 3
-   # elif("QL2P12" in fname and board=="QL2P12"): nbinsx = 
-   # elif("QL2P34" in fname and board=="QL2P34"): nbinsx = 
-   # elif("QL2C12" in fname and board=="QL2C12"): nbinsx = 
-   # elif("QL2C34" in fname and board=="QL2C34"): nbinsx = 
+   elif("QL2P12" in fname and board=="QL2P12"): nbinsx = 4 
+   elif("QL2P34" in fname and board=="QL2P34"): nbinsx = 5
+   elif("QL2C12" in fname and board=="QL2C12"): nbinsx = 4
+   elif("QL2C34" in fname and board=="QL2C34"): nbinsx = 4
    ### CH
    # elif("QS2P12" in fname and board=="QS2P12"): nbinsx = 
    # elif("QS2P34" in fname and board=="QS2P34"): nbinsx = 
@@ -70,8 +70,8 @@ def get(site):
       allareas.update( {"QS1C":{"12":load('QS1C12','cathodes/4963.10-14_QS1C12_Pads_Area.xlsx'), "34":load('QS1C34','cathodes/4963.10-51_QS1C34_Pads_Area.xlsx')} } )
    if(site=="CA"):                   
       allareas.update( {"QS3P":{"12":load('QS3P12','cathodes/4931.00-14_QS3P12_Pads_Area.xlsx'), "34":load('QS3P34','cathodes/4931.00-51_QS3P34_Pads_Area.xlsx')} } )
-      # allareas.update( {"QL2P":{"12":load('QL2P12','cathodes/4921.00-14_QL2P12_Pads_Area.xlsx'), "34":load('QL2P34','cathodes/4921.00-51_QL2P34_Pads_Area.xlsx')} } )
-      # allareas.update( {"QL2C":{"12":load('QL2C12','cathodes/4921.10-14_QL2C12_Pads_Area.xlsx'), "34":load('QL2C34','cathodes/4921.10-51_QL2C34_Pads_Area.xlsx')} } )
+      allareas.update( {"QL2P":{"12":load('QL2P12','cathodes/5021.00-14_QL2P12_Pads_Area.xlsx'), "34":load('QL2P34','cathodes/5021.00-51_QL2P34_Pads_Area.xlsx')} } )
+      allareas.update( {"QL2C":{"12":load('QL2C12','cathodes/5021.10-14_QL2C12_Pads_Area.xlsx'), "34":load('QL2C34','cathodes/5021.10-51_QL2C34_Pads_Area.xlsx')} } )
    if(site=="CH"):
       print("Not implemented yet, quitting."); quit()
       # allareas.update( {"QS2P":{"12":load('QS2P12','cathodes/4963.00-14_QS2P12_Pads_Area.xlsx'), "34":load('QS2P34','cathodes/4963.00-51_QS2P34_Pads_Area.xlsx')} } )
