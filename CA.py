@@ -12,6 +12,9 @@ files = [
           "QS3P_10_L1_31kV_05132019", "QS3P_10_L2_31kV_05132019", "QS3P_10_L3_31kV_05132019", "QS3P_10_L4_31kV_05132019",
           "QS3P_11_L1_31kV_05232019", "QS3P_11_L2_31kV_05232019", "QS3P_11_L3_31kV_05232019", "QS3P_11_L4_31kV_05232019",
           "QS3P_12_L1_31kV_05312019", "QS3P_12_L2_31kV_05312019", "QS3P_12_L3_31kV_05312019", "QS3P_12_L4_31kV_05312019",
+
+          "QL2P_4_L1_31kV_100519", "QL2P_4_L2_31kV_100519", "QL2P_4_L3_31kV_100519", "QL2P_4_L4_31kV_100519",
+          "QL2C_4_L1_31kV_102219", "QL2C_4_L2_31kV_102219", "QL2C_4_L3_31kV_102219", "QL2C_4_L4_31kV_102219",
 ]
 
 
@@ -23,8 +26,8 @@ known_channels = {"QL2P":[], "QL2C":[], "QS3P":[]}
 boards = [
           {"board":"QS3P12", "fname":"QS3P_6_L1_31kV_12182018"},
           {"board":"QS3P34", "fname":"QS3P_6_L3_31kV_12182018"},
-          # {"board":"QL2P12", "fname":""},
-          # {"board":"QL2P34", "fname":""},
-          # {"board":"QL2C12", "fname":""},
-          # {"board":"QL2C34", "fname":""},
+          {"board":"QL2P12", "fname":"QL2P_4_L1_31kV_100519"},
+          {"board":"QL2P34", "fname":"QL2P_4_L1_31kV_100519"},
+          {"board":"QL2C12", "fname":"QL2C_4_L1_31kV_102219"},
+          {"board":"QL2C34", "fname":"QL2C_4_L1_31kV_102219"},
 ]
