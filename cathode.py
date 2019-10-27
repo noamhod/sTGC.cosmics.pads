@@ -43,10 +43,10 @@ def load(board,fname):
    elif("QL2C12" in fname and board=="QL2C12"): nbinsx = 4
    elif("QL2C34" in fname and board=="QL2C34"): nbinsx = 4
    ### CH
-   # elif("QS2P12" in fname and board=="QS2P12"): nbinsx = 
-   # elif("QS2P34" in fname and board=="QS2P34"): nbinsx = 
-   # elif("QS2C12" in fname and board=="QS2C12"): nbinsx = 
-   # elif("QS2C34" in fname and board=="QS2C34"): nbinsx = 
+   elif("QS2P12" in fname and board=="QS2P12"): nbinsx = 2
+   elif("QS2P34" in fname and board=="QS2P34"): nbinsx = 3 
+   elif("QS2C12" in fname and board=="QS2C12"): nbinsx = 3
+   elif("QS2C34" in fname and board=="QS2C34"): nbinsx = 3
    else: print("unknown cathode.\nQuitting"); quit()
    nbinsy = int(n/nbinsx)
    bins.update( {board:{"npads":n, "nbinsx":nbinsx, "nbinsy":nbinsy}} )
@@ -74,8 +74,8 @@ def get(site):
       allareas.update( {"QL2C":{"12":load('QL2C12','cathodes/5021.10-14_QL2C12_Pads_Area.xlsx'), "34":load('QL2C34','cathodes/5021.10-51_QL2C34_Pads_Area.xlsx')} } )
    if(site=="CH"):
       print("Not implemented yet, quitting."); quit()
-      # allareas.update( {"QS2P":{"12":load('QS2P12','cathodes/4963.00-14_QS2P12_Pads_Area.xlsx'), "34":load('QS2P34','cathodes/4963.00-51_QS2P34_Pads_Area.xlsx')} } )
-      # allareas.update( {"QS2C":{"12":load('QS2C12','cathodes/4963.10-14_QS2C12_Pads_Area.xlsx'), "34":load('QS2C34','cathodes/4963.10-51_QS2C34_Pads_Area.xlsx')} } )
+      allareas.update( {"QS2P":{"12":load('QS2P12','cathodes/4748.00-14_QS2P12_Pads_Area.xlsx'), "34":load('QS2P34','cathodes/4748.00-51_QS2P34_Pads_Area.xlsx')} } )
+      allareas.update( {"QS2C":{"12":load('QS2C12','cathodes/4748.10-14_QS2C12_Pads_Area.xlsx'), "34":load('QS2C34','cathodes/4748.10-51_QS2C34_Pads_Area.xlsx')} } )
    print(bins)
    return allareas
 
