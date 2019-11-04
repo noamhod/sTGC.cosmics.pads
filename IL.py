@@ -5,6 +5,7 @@ ftrim = 0.1
 
 # files recorded (one per layer)
 files = [
+          "QL1P_9_L1_31kV_241019", "QL1P_9_L2_31kV_281019", "QL1P_9_L3_31kV_271019", "QL1P_9_L4_31kV_271019",
           "QL1P_10_L1_31kV_180919", "QL1P_10_L2_31kV_180919", "QL1P_10_L3_31kV_160919", "QL1P_10_L4_31kV_180919",
           "QL1P_7_L1_31kV_100919",  "QL1P_7_L2_31kV_120919",  "QL1P_7_L3_31kV_110919",  "QL1P_7_L4_31kV_120919",
           ### "QL1P_7_L1_29kV_090919",  "QL1P_7_L2_29kV_110919",  "QL1P_7_L3_29kV_110919",  "QL1P_7_L4_29kV_150919",
@@ -20,7 +21,7 @@ files = [
 
 
 # known_channels = {"QL1P":[{VMMid1:VMMch1}, {VMMid2:VMMch2},...], "QL1C":[{VMMid1:VMMch1}, {VMMid2:VMMch2},...], "QS3C":[{VMMid1:VMMch1}, {VMMid2:VMMch2},...]}
-known_channels = {"QL1P":[{2:34}, {3:10}], "QL1C":[], "QS3C":[{2:29},]}
+known_channels = {"QL1P":[{2:34}, {3:10}, {3:0}], "QL1C":[], "QS3C":[{2:29},]}
 
 
 # fnames should correspond to existing names found in the files array above
