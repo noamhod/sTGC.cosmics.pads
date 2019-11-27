@@ -53,22 +53,22 @@ if(argus.s=="CA"): ftrim = CA.ftrim
 ### load database
 for f in files:
    words = f.split("_")
-   db.update({f:{"qname" : words[0],
-                 "qid"   : int(words[1]),
-                 "layer" : int(words[2].replace("L","")),
-                 "HV"    : float(words[3].replace("kV","")),
-                 "date"  : words[4]}
+   db.update({f:{"qname"  : words[0],
+                 "qid"    : int(words[1]),
+                 "gasvol" : int(words[2].replace("L","")),
+                 "HV"     : float(words[3].replace("kV","")),
+                 "date"   : words[4]}
             })
 
 
 ### get histos
 for f in files:
    quad  = db[f]["qname"]
-   layer = db[f]["layer"]
-   channels = mapping.read(quad,str(layer),"pad")
+   gasvol = db[f]["gasvol"]
+   channels = mapping.read(quad,str(gasvol),"pad")
    nchannels = len(channels)
    fname = f+suffix
-   hname = "Number_of_Hits"+str(layer)
+   hname = "Number_of_Hits"+str(gasvol)
    tfile = TFile("root/"+fname,"READ")
    print("Getting: %s from file: %s" % (hname,"root/"+fname))
    histos.update({f:tfile.Get(hname).Clone()})
@@ -95,15 +95,15 @@ for f in files:
    ohistos[f].Reset()
    ohistos[f].SetTitle("Normalised to pad area (Benoit)" )
    quad  = db[f]["qname"]
-   layer = str(db[f]["layer"])
-   channels = mapping.read(quad,layer,"pad")
+   gasvol = str(db[f]["gasvol"])
+   channels = mapping.read(quad,gasvol,"pad")
    nchannels = len(channels)
    n12 = len(allareas[quad]["12"])
    areas = allareas[quad]["12"] if(nchannels==n12) else allareas[quad]["34"]
    for benoit_pad in range(1,h.GetNbinsX()+1):
       channel = mapping.get("Benoit",str(benoit_pad),channels)
       if(len(channel)==0):
-         print("quad:%s, layer:%s, channel:%g for %s ???\nQuitting." % (quad,layer,benoit_pad,f))
+         print("quad:%s, gasvol:%s, channel:%g for %s ???\nQuitting." % (quad,gasvol,benoit_pad,f))
          quit()
       vmm_id   = channel["VMMid"]
       vmm_ch   = channel["VMMch"]
@@ -133,8 +133,8 @@ def txtsummary(f,h,avg,rms):
    ftxt.write(f+"\n")
    ftxt.write("Mean and RMS calculated by trimming "+str(ftrim*100)+"% of the channels with the highest normalised occupancy\n\n")
    quad  = db[f]["qname"]
-   layer = str(db[f]["layer"])
-   channels = mapping.read(quad,layer,"pad")
+   gasvol = str(db[f]["gasvol"])
+   channels = mapping.read(quad,gasvol,"pad")
    known_channels = {}
    if(argus.s=="IL"): known_channels = IL.known_channels[quad]
    if(argus.s=="RU"): known_channels = RU.known_channels[quad]
