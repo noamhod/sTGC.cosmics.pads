@@ -80,12 +80,16 @@ def get(site):
    return allareas
 
 
-def getnbins(quad,nchannels):
+# def getnbins(quad,nchannels):
+def getnbins(quad,gasvol):
    nbinsx = -1
    nbinsy = -1
-   n12 = bins[quad+"12"]["npads"]
-   nbinsx = bins[quad+"12"]["nbinsx"] if(nchannels==n12) else bins[quad+"34"]["nbinsx"]
-   nbinsy = bins[quad+"12"]["nbinsy"] if(nchannels==n12) else bins[quad+"34"]["nbinsy"]
+   # n12 = bins[quad+"12"]["npads"]
+   is12 = (gasvol==1 or gasvol==2)
+   # nbinsx = bins[quad+"12"]["nbinsx"] if(nchannels==n12) else bins[quad+"34"]["nbinsx"]
+   # nbinsy = bins[quad+"12"]["nbinsy"] if(nchannels==n12) else bins[quad+"34"]["nbinsy"]
+   nbinsx = bins[quad+"12"]["nbinsx"] if(is12) else bins[quad+"34"]["nbinsx"]
+   nbinsy = bins[quad+"12"]["nbinsy"] if(is12) else bins[quad+"34"]["nbinsy"]
    return nbinsx,nbinsy
    
 

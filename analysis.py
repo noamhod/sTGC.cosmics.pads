@@ -74,7 +74,8 @@ for f in files:
    histos.update({f:tfile.Get(hname).Clone()})
    histos[f].SetDirectory(0)
    ### 2D binning depends on the cathode board
-   nbinsx,nbinsy = cathode.getnbins(quad,nchannels)
+   # nbinsx,nbinsy = cathode.getnbins(quad,nchannels)
+   nbinsx,nbinsy = cathode.getnbins(quad,gasvol)
    print("nbinsx=%g, nbinsy=%g" %(nbinsx,nbinsy))
    o2histos.update( { f:TH2D(f+"_2d_norm",         "Normalised, in board mapping (Alam);;;Hits/Area [mm^{-2}]", nbinsx,0.5,nbinsx+0.5, nbinsy,0.5,nbinsy+0.5) } )
    o2hdummy.update( { f:TH2D(f+"_2d_norm_dummy",   "Normalised, in board mapping (Alam);;;Hits/Area [mm^{-2}]", nbinsx,0.5,nbinsx+0.5, nbinsy,0.5,nbinsy+0.5) } )
@@ -98,8 +99,8 @@ for f in files:
    gasvol = str(db[f]["gasvol"])
    channels = mapping.read(quad,gasvol,"pad")
    nchannels = len(channels)
-   n12 = len(allareas[quad]["12"])
-   areas = allareas[quad]["12"] if(nchannels==n12) else allareas[quad]["34"]
+   is12 = (gasvol=="1" or gasvol=="2")
+   areas = allareas[quad]["12"] if(is12) else allareas[quad]["34"]
    for benoit_pad in range(1,h.GetNbinsX()+1):
       channel = mapping.get("Benoit",str(benoit_pad),channels)
       if(len(channel)==0):
