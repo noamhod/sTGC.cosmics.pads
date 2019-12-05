@@ -16,7 +16,7 @@ def trimspikes(lst,ftrim):
    lst.sort()
    n = len(lst)
    nmax = int(n*(1-ftrim))
-   trimmed = lst[1:nmax]
+   trimmed = lst[0:nmax]
    return trimmed
 
 def meanrms(lst):
